@@ -8,7 +8,7 @@ The Heartbeat Monitoring and Alert System is designed to detect and monitor atri
 To run the Heartbeat Monitoring and Alert System:
 1. Navigate to the `backend` directory.
 2. Run the command: `node server.js`.
-3. Either upload the heartbeats reading files (e.g., reading.txt, available in the GitHub repository) to the application or connect directly to the BITalino device using its MAC address for real-time monitoring.
+3. Either upload the heartbeats reading files (e.g., reading.txt, available in the GitHub repository files ) to the application or connect directly to the BITalino device using its MAC address for real-time monitoring.
 
 ### Repository
 
