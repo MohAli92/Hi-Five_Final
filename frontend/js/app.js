@@ -28,7 +28,7 @@ document.getElementById('upload-form').addEventListener('submit', async (e) => {
             const data = await response.json();
 
            
-            // Update chart with new data
+            
             updateChart(data);
         } else {
             alert('Failed to process file.');
@@ -40,12 +40,12 @@ document.getElementById('upload-form').addEventListener('submit', async (e) => {
     }
 });
 
-// Chart function
+
 function updateChart(data) {
     const chartContainer = d3.select('#chart-container');
     chartContainer.selectAll('*').remove();
 
-    const margin = { top: 20, right: 30, bottom: 70, left: 40 }; // تعديل الهامش السفلي
+    const margin = { top: 20, right: 30, bottom: 70, left: 40 };
     const width = 800 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
@@ -82,7 +82,7 @@ function updateChart(data) {
         .attr('stroke-width', 1.5)
         .attr('d', line);
 
-    // إضافة عنوان المحور السيني
+    
     svg.append('text')
         .attr('text-anchor', 'middle')
         .attr('x', width / 2)
@@ -91,8 +91,8 @@ function updateChart(data) {
         .style('font-weight', 'bold')
         .text('Time (Seconds)');
 
-    // تحذيرات أو معلومات أسفل الجراف
-    const irregularities = detectIrregularities(data); // دالة لتحليل البيانات
+    
+    const irregularities = detectIrregularities(data);
     const message = irregularities
         ? 'Irregular ECG detected! This may indicate potential Arrhythmia. Please consult a doctor.'
         : 'ECG signals appear normal. No significant irregularities detected.';
@@ -106,14 +106,14 @@ function updateChart(data) {
         .text(message);
 }
 
-// دالة لتحليل البيانات للكشف عن أي مشاكل
+
 function detectIrregularities(data) {
-    const threshold = 2; // قيمة يمكن تغييرها للكشف عن الاضطرابات
+    const threshold = 2;
     for (let i = 1; i < data.length; i++) {
         const diff = Math.abs(data[i].valueQuantity.value - data[i - 1].valueQuantity.value);
         if (diff > threshold) {
-            return true; // اكتشاف اضطراب
+            return true; 
         }
     }
-    return false; // لا توجد اضطرابات
+    return false; 
 }
