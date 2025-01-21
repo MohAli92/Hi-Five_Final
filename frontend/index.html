@@ -172,7 +172,7 @@
         <div class="actions-container">
             <h3>Actions</h3>
             <button onclick="showUpload()">Upload Analysis</button>
-            <button>Record Analysis</button>
+            <button onclick="navigateToRecordAnalysis()">Record Analysis</button>
         </div>
 
         
@@ -275,6 +275,9 @@
                 .attr("stroke", "steelblue")
                 .attr("stroke-width", 1.5)
                 .attr("d", line);
+        }
+        function navigateToRecordAnalysis() {
+            window.location.href = "record_analysis.html"; // Adjust the file path as needed
         }
     </script>
 </body>
