@@ -1,4 +1,3 @@
-// Required imports
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -27,14 +26,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 const app = express();
 
-// Enable CORS
+
 app.use(cors({ origin: FRONTEND_URL }));
 
-// Serve frontend
+
 const frontendPath = path.join(__dirname, '..', 'frontend');
 app.use(express.static(frontendPath));
 
-// WebSocket server
+
 const wss = new WebSocket.Server({ noServer: true });
 
 wss.on('connection', (ws) => {
@@ -70,7 +69,7 @@ wss.on('connection', (ws) => {
     });
 });
 
-// File upload and processing
+
 app.post('/upload', upload.single('file'), (req, res) => {
     const filePath = req.file.path;
 
@@ -96,7 +95,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     });
 });
 
-// Start the server
+
 const server = app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     if (CODESPACE_NAME) {
